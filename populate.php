@@ -310,7 +310,7 @@
     ?>
     <br>
     <a href="lab9.php">
-        <button>Home</button>
+        <button>Back</button>
     </a>
 </body>
 </html>

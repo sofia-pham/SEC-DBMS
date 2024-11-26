@@ -85,8 +85,8 @@
         }
     ?>
     <br>
-    <a href="510lab9.php">
-        <button>Home</button>
+    <a href="lab9.php">
+        <button>Back</button>
     </a>
 </body>
 </html>
