@@ -7,21 +7,6 @@
 <body>
     <h1>Drop Tables</h1>
 
-    <form action='drop.php' method='POST'>
-        <label for='table'>Choose a table to drop<br>
-            <input type='radio' name='table' value='VENUE' required>VENUE</input><br>
-            <input type='radio' name='table' value='TICKET'>TICKET</input><br>
-            <input type='radio' name='table' value='PAYMENT'>PAYMENT</input><br>
-            <input type='radio' name='table' value='ORDERS'>ORDERS</input><br>
-            <input type='radio' name='table' value='ORDERED_TICKETS'>ORDERED_TICKETS</input><br>
-            <input type='radio' name='table' value='EVENT'>EVENT</input><br>
-            <input type='radio' name='table' value='CUSTOMER'>CUSTOMER</input><br>
-            <input type='radio' name='table' value='ALL'>ALL</input><br>
-        </label><br>
-
-        <button type='submit'>Drop</button>
-    </form>
-
     <?php
         error_reporting(E_ALL);
         ini_set('display_errors', 'On');
