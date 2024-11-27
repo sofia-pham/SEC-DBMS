@@ -11,12 +11,10 @@
 
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 'On');
 
 // Create connection to Oracle
 $conn = oci_connect(
-    's3pham', 
-    '10080284', 
+    's3pham', '10080284', 
     '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle12c.cs.torontomu.ca)(Port=1521))(CONNECT_DATA=(SID=orcl12c)))'
 );
 
@@ -43,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sql_query'])) {
             echo "Error parsing SQL query: " . $m['message'];
             die();
         }
-
+    }
     $r = oci_execute($stid);
 
     if (!$r) {
