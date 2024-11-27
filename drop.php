@@ -12,9 +12,7 @@
     <?php
     error_reporting(E_ALL);
     // Create connection to Oracle
-    $conn = oci_connect(
-        's3pham',
-        '10080284',
+    $conn = oci_connect('ccaranda', '07253552', 
         '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle12c.cs.torontomu.ca)(Port=1521))(CONNECT_DATA=(SID=orcl12c)))'
     );
     if (!$conn) {
