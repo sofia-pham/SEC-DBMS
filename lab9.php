@@ -24,11 +24,14 @@ if (!$conn) {
     <a href="populate.php">
         <button>Populate Tables</button>
     </a>
-    <a href="query.php">
-        <button>Query Tables</button>
-    </a>
+
     <a href="drop.php">
         <button>Drop Tables</button>
     </a>
+    <form action="query.php" method="POST">
+        <label for="sql_query">Enter SQL Query:</label><br>
+        <textarea id="sql_query" name="sql_query" rows="4" cols="50" placeholder="Write your SQL search query here"></textarea><br><br>
+        <button type="submit">Submit Query</button>
+    </form>
 </body>
 </html>
