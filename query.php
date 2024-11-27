@@ -30,14 +30,19 @@ if (!$conn) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sql_query'])) {
     $sql_query = htmlspecialchars($_POST['sql_query']);  // Sanitize input to prevent XSS
 
-    // Parse and execute the SQL query
-    $stid = oci_parse($conn, $sql_query);
-    
-    if (!$stid) {
-        $m = oci_error($conn);
-        echo "Error parsing SQL query: " . $m['message'];
-        die();
-    }
+    // Check if the query starts with 'SELECT' or 'INSERT'
+    $query_type = strtoupper(trim(substr($sql_query, 0, 6)));  // Extract the first 6 characters to identify the query type
+    if ($query_type !== 'SELECT' && $query_type !== 'INSERT') {
+        echo "<p style='color: red;'>Only SELECT or INSERT queries are allowed!</p>";
+    } else {
+        // Parse and execute the SQL query
+        $stid = oci_parse($conn, $sql_query);
+        
+        if (!$stid) {
+            $m = oci_error($conn);
+            echo "Error parsing SQL query: " . $m['message'];
+            die();
+        }
 
     $r = oci_execute($stid);
 
