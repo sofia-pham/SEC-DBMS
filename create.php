@@ -9,7 +9,6 @@
 
     <?php
         error_reporting(E_ALL);
-        ini_set('display_errors', 'On');
         // Create connection to Oracle
         $conn = oci_connect('s3pham', '10080284',
         '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle12c.cs.torontomu.ca)(Port=1521))(CONNECT_DATA=(SID=orcl12c)))');
@@ -81,22 +80,21 @@
                 quantity_in_stock INT,
                 FOREIGN KEY (product_id) REFERENCES Products(product_id)
             )"];
-        }
 
         foreach ($queries as $query) {
             $stid = oci_parse($conn, $query);
             $r = oci_execute($stid);
 
             if (!$r) {
-                $m = oci_error();
-                echo "Error Creating Tables: " . $m['message'] . "<br>";
+                echo "Error Creating Tables: Tables already exist! " . "<br>";
                 $sucess = false;
                 break;
             }
         }
 
-        if ($sucess) {
+        if ($r) {
             echo "All tables were successfully created!";
+        }
             oci_commit($conn);
     }
     ?>

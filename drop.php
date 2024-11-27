@@ -11,7 +11,6 @@
 
     <?php
     error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
     // Create connection to Oracle
     $conn = oci_connect(
         's3pham',
@@ -22,9 +21,9 @@
         $m = oci_error();
         echo $m['message'];
         die();
+        
     } else {
         $queries = [
-            "DROP TABLE Ordered_Tickets CASCADE CONSTRAINTS",
             "DROP TABLE ORDER_DETAILS",
             "DROP TABLE INVENTORY",
             "DROP TABLE RETURN_DETAILS",
@@ -38,8 +37,7 @@
             $r = oci_execute($stid);
 
             if (!$r) {
-                $m = oci_error();
-                echo $m['message'];
+                echo "Error Creating Tables: Tables already exist! " . "<br>";
                 break;
             }
         }
