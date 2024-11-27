@@ -37,13 +37,13 @@
             $r = oci_execute($stid);
 
             if (!$r) {
-                echo "Error Creating Tables: Tables already exist! " . "<br>";
+                echo "Error Dropping Tables: Tables do not exist! <br>";
                 break;
             }
         }
 
         if ($r) {
-            echo "All tables were successfully dropped!";
+            echo "All tables were successfully dropped! <br>";
         }
         oci_commit($conn);
     }

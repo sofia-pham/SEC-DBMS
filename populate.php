@@ -11,7 +11,6 @@
 
     <?php
     error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
     // Create connection to Oracle
     $conn = oci_connect(
         's3pham',
@@ -69,16 +68,21 @@
         foreach ($queries as $query) {
             $stid = oci_parse($conn, $query);
             $r = oci_execute($stid);
-
+            
             if (!$r) {
-                $m = oci_error();
-                echo $m['message'];
-                break;
+                $error = oci_error($stid); 
+                if (strpos($error['message'], 'ORA-00001') !== false) {
+                    echo "Error Populating Tables: Duplicate values found while populating tables! <br>";
+                } elseif (strpos($error['message'], 'ORA-00942') !== false) {
+                    echo "Error: Tables do not exist. Please create tables before populating it! <br>";
+                } 
+                break; 
             }
+
         }
 
         if ($r) {
-            echo "Tables were populated!";
+            echo "Tables were populated! <br>";
         }
         oci_commit($conn);
     }

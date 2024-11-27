@@ -86,14 +86,13 @@
             $r = oci_execute($stid);
 
             if (!$r) {
-                echo "Error Creating Tables: Tables already exist! " . "<br>";
-                $sucess = false;
+                echo "Error Creating Tables: Tables already exist! <br>";
                 break;
             }
         }
 
         if ($r) {
-            echo "All tables were successfully created!";
+            echo "All tables were successfully created! <br>";
         }
             oci_commit($conn);
     }
