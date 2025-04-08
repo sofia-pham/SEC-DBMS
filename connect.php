@@ -5,8 +5,8 @@ ini_set('display_errors', 1);
 
 function connect() {
     $conn = oci_connect(
-        's3pham', 
-        '10080284', 
+        'XXXXX', 
+        'XXXXX', 
         '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))'
     );
 
